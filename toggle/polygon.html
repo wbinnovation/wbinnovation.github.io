@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Togglability</title>
+    <link rel="stylesheet" href="htp://js.arcgis.com/3.8/js/dojo/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/togglability.css">
+    <script src="http://js.arcgis.com/3.8/"></script>
+    <script src="js/polygon.js"></script>
+</head>
+<body class="tundra">
+    <div id="map">
+    </div>
+    <div id="header">
+            <strong>Polygon Toggle Test</strong>
+    </div>
+    <div class="floater">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ForestServiceLogoOfficial.svg/200px-ForestServiceLogoOfficial.svg.png" />
+    </div>
+    <div id="site-info"></div>
+    <div id="meta-container">
+        <div id="layers-header" class="floater">
+            <strong>Layers</strong>
+            <i class="visibility-icon fa fa-list"></i>
+        </div>
+        <div id="layers">
+            <div id="info" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/0/images/477f346ec463ce62792eaa99b6ade82a" alt="info-symbol" />
+                <strong>Uganda Subnational</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

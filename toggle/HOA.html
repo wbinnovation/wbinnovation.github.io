@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Horn of Africa Mashups</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://wbinnovation.github.io/toggle/style/togglability.css">
+    <script src="http://js.arcgis.com/3.8/"></script>
+    <script>
+		var map, sudanRefugeeCamps, ethiopiaRefugeeCamps, acled4Q13, foodInsecurity2011, ethiopiaPoverty2005, sudanPoverty2009, idpLocations;
+		require([
+				"esri/map", "esri/layers/ArcGISDynamicMapServiceLayer", 
+				"esri/layers/FeatureLayer", "dojo/on", "dojo/dom", "dojo/query", "dojo/domReady!"
+			], function(
+				Map, ArcGISDynamicMapServiceLayer, FeatureLayer, on, query, dom
+			) {
+				map = new Map("map",{
+					basemap: "gray",
+					center: [35, 10],
+					zoom: 5
+				});
+				sudanRefugeeCamps = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/2",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				ethiopiaRefugeeCamps = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/3",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				acled4Q13 = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/12",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				foodInsecurity2011 = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/33",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				ethiopiaPoverty2005 = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/36",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				sudanPoverty2009 = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/37",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				idpLocations = new
+					FeatureLayer("https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/26",{
+					mode: FeatureLayer.MODE_ONDEMAND,
+					outFields:["*"]
+				});
+				map.addLayer(foodInsecurity2011);
+				map.addLayer(ethiopiaPoverty2005);
+				map.addLayer(sudanPoverty2009);
+				map.addLayer(idpLocations);
+				map.addLayer(sudanRefugeeCamps);
+				map.addLayer(ethiopiaRefugeeCamps);
+				map.addLayer(acled4Q13);
+				//click event for layers
+				//using dojo for the event and class toggling but could just as easily be jQuery or vanilla javascript
+				on(dojo.byId("sudan-refugee-camps"), "click", function() {
+					sudanRefugeeCamps.visible ? sudanRefugeeCamps.hide() :  sudanRefugeeCamps.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#sudan-refugee-camps .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("ethiopia-refugee-camps"), "click", function() {
+					ethiopiaRefugeeCamps.visible ? ethiopiaRefugeeCamps.hide() :  ethiopiaRefugeeCamps.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#ethiopia-refugee-camps .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("acled-4Q13"), "click", function() {
+					acled4Q13.visible ? acled4Q13.hide() :  acled4Q13.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#acled-4Q13 .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("food-insecurity-2011"), "click", function() {
+					foodInsecurity2011.visible ? foodInsecurity2011.hide() :  foodInsecurity2011.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#food-insecurity-2011 .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("ethiopia-poverty-2005"), "click", function() {
+					ethiopiaPoverty2005.visible ? ethiopiaPoverty2005.hide() :  ethiopiaPoverty2005.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#ethiopia-poverty-2005 .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("sudan-poverty-2009"), "click", function() {
+					sudanPoverty2009.visible ? sudanPoverty2009.hide() :  sudanPoverty2009.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#sudan-poverty-2009 .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+				on(dojo.byId("idpLocations"), "click", function() {
+					idpLocations.visible ? idpLocations.hide() :  idpLocations.show();
+					dojo.toggleClass(this, "visible");
+					dojo.query("#idpLocations .visibility-icon").toggleClass("fa-picture-o").toggleClass("fa-ban");
+				});
+/*		        info.on("mouse-over", showInfo);
+				info.on("mouse-out", clearInfo);
+				function clearInfo(e) {
+					dojo.byId("site-info").innerHTML = "";   
+				}
+					function showInfo(e) {
+					dojo.byId("site-info").innerHTML = e.graphic.attributes.REC_NAME;   
+				}*/
+			}
+		);
+	</script>
+</head>
+<body class="tundra">
+    <div id="map">
+    </div>
+    <div id="header">
+            <strong>Horn of Africa Layer Toggles</strong>
+    </div>
+    <div class="floater">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ForestServiceLogoOfficial.svg/200px-ForestServiceLogoOfficial.svg.png" />
+    </div>
+    <div id="site-info"></div>
+    <div id="meta-container">
+        <div id="layers-header" class="floater">
+            <strong>Layers</strong>
+            <i class="visibility-icon fa fa-list"></i>
+        </div>
+        <div id="layers">
+            <div id="ethiopia-poverty-2005" class="togglable-layer visible floater">
+                <strong>Ethiopia Poverty Levels in 2005 (areas)</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+			<div id="sudan-poverty-2009" class="togglable-layer visible floater">
+                <strong>Sudan Poverty Levels in 2009 (areas)</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="food-insecurity-2011" class="togglable-layer visible floater">
+                <strong>Food Insecurity in 2011 (areas)</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+			<div id="idpLocations" class="togglable-layer visible floater">
+                <strong>IDP Locations (areas)</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="sudan-refugee-camps" class="togglable-layer visible floater">
+                <img src="https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/2/images/0fcbb579e9e90b37399fce84e2066511" alt="info-symbol" />
+                <strong>Sudan Refugee Camps</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+			<div id="ethiopia-refugee-camps" class="togglable-layer visible floater">
+                <img src="https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/3/images/0fcbb579e9e90b37399fce84e2066511" alt="info-symbol" />
+                <strong>Ethiopia Refugee Camps</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+			<div id="acled-4Q13" class="togglable-layer visible floater">
+                <img src="https://services.arcgis.com/iQ1dY19aHwbSDYIF/arcgis/rest/services/HOA/FeatureServer/12/images/bbba7dfb0122a820fc3bcc08108389b7" alt="info-symbol" />
+                <strong>ACLED Last Quarter 2013</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

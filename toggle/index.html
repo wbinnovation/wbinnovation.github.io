@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Togglability</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.8/js/dojo/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="//js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/togglability.css">
+    <script src="//js.arcgis.com/3.8/"></script>
+    <script src="js/index.js"></script>
+</head>
+<body class="tundra">
+    <div id="map">
+    </div>
+    <div id="header">
+            <strong>Wenatchee National Forest Recreation Sites</strong>
+    </div>
+    <div class="floater">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ForestServiceLogoOfficial.svg/200px-ForestServiceLogoOfficial.svg.png" />
+    </div>
+    <div id="site-info"></div>
+    <div id="meta-container">
+        <div id="layers-header" class="floater">
+            <strong>Layers</strong>
+            <i class="visibility-icon fa fa-list"></i>
+        </div>
+        <div id="layers">
+            <div id="trail" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/4/images/959f8f80c6173a0d5f56757d0d64bdc4" alt="trail-symbol" />
+                <strong>trail head</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="camp" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/5/images/74eba813ca25115d150a8463101785d1" alt="camp-symbol" />
+                <strong>campground</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="picnic" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/2/images/a083d71d2b811b72c0af84fd4329e18d" alt="picnic-symbol" />
+                <strong>picnic area</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="ski" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/1/images/25ead2ca42f63474e2e8329de449888b" alt="ski-symbol" />
+                <strong>ski area</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="boat" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/3/images/4350e51ab3b2dbf89346f66af1416518" alt="boat-symbol" />
+                <strong>boat launch</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+            <div id="info" class="togglable-layer visible floater">
+                <img src="http://services1.arcgis.com/mRXrgD3LWwGHJmpS/ArcGIS/rest/services/wenatchee_rec/FeatureServer/0/images/477f346ec463ce62792eaa99b6ade82a" alt="info-symbol" />
+                <strong>visitor info</strong>
+                <i class="visibility-icon fa fa-picture-o"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
